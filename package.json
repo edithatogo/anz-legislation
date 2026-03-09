@@ -28,12 +28,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dylanmordaunt/nz-legislation-tool.git"
+    "url": "https://github.com/edithatogo/nz-legislation.git"
   },
   "bugs": {
-    "url": "https://github.com/dylanmordaunt/nz-legislation-tool/issues"
+    "url": "https://github.com/edithatogo/nz-legislation/issues"
   },
-  "homepage": "https://github.com/dylanmordaunt/nz-legislation-tool#readme",
+  "homepage": "https://github.com/edithatogo/nz-legislation#readme",
   "engines": {
     "node": ">=18.0.0"
   },
