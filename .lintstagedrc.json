@@ -1,4 +1,4 @@
 {
-  "*.ts": ["eslint --fix", "bash -c 'npm run typecheck || exit 0'"],
+  "src/**/*.ts": ["eslint --fix", "bash -c 'npm run typecheck || exit 0'"],
   "*.{json,md}": ["prettier --write"]
 }
