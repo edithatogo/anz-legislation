@@ -1,6 +1,6 @@
-# NZ Legislation Tool
+# NZ Legislation
 
-[![npm](https://img.shields.io/npm/v/nz-legislation-tool)](https://www.npmjs.com/package/nz-legislation-tool)
+[![npm](https://img.shields.io/npm/v/nz-legislation)](https://www.npmjs.com/package/nz-legislation)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/)
 
@@ -28,13 +28,13 @@ A fast, user-friendly CLI tool for researchers, legal professionals, and anyone 
 ### Try without installing (recommended for first-time users)
 
 ```bash
-npx nz-legislation-tool search --query "health"
+npx nz-legislation search --query "health"
 ```
 
 ### Or install once
 
 ```bash
-npm install -g nz-legislation-tool
+npm install -g nz-legislation
 
 # Then use anywhere
 nzlegislation search --query "health"
@@ -80,6 +80,71 @@ set NZ_LEGISLATION_API_KEY=your_api_key_here
 ```bash
 # Create .env file in your project directory
 NZ_LEGISLATION_API_KEY=your_api_key_here
+```
+
+---
+
+## ⚙️ Configuration
+
+### View Configuration
+```bash
+nzlegislation config --show
+```
+
+### Configure Rate Limits
+Control API usage to match your needs:
+
+```bash
+# Set daily limit (default: 10,000)
+nzlegislation config --daily-limit 5000
+
+# Set burst limit (default: 2,000 per 5min)
+nzlegislation config --burst-limit 1000
+
+# Set safety margin 0-1 (default: 0.1 = 10%)
+nzlegislation config --safety-margin 0.2
+```
+
+**Use Cases:**
+- **Casual user:** `--daily-limit 1000 --safety-margin 0.2`
+- **Power user:** `--daily-limit 10000 --safety-margin 0.05`
+- **Shared API key:** `--daily-limit 2000 --burst-limit 500`
+
+### Verbose Mode
+Enable detailed logging for debugging:
+
+```bash
+nzlegislation search --query "health" --verbose
+```
+
+Logs are saved to `~/.nz-legislation-tool/logs/`
+
+---
+
+## 🔍 Troubleshooting
+
+### Check for Updates
+The CLI automatically checks for updates. Manual check:
+```bash
+nzlegislation --version
+```
+
+If update available, you'll see:
+```
+╔═══════════════════════════════════════════════════════════╗
+║  ⚠️  New version available!                               ║
+║  Current: 1.0.0        Latest:   1.1.0                   ║
+║  Run: npm install -g nz-legislation                  ║
+╚═══════════════════════════════════════════════════════════╝
+```
+
+### View Error Logs
+```bash
+# Windows
+notepad %USERPROFILE%\.nz-legislation-tool\logs\error-*.log
+
+# macOS/Linux
+cat ~/.nz-legislation-tool/logs/error-*.log
 ```
 
 ---
@@ -364,18 +429,18 @@ export NZ_LEGISLATION_API_KEY=your_key_here
 
 ### npm (Recommended)
 ```bash
-npm install -g nz-legislation-tool
+npm install -g nz-legislation
 ```
 
 ### npx (No install)
 ```bash
-npx nz-legislation-tool search --query "health"
+npx nz-legislation search --query "health"
 ```
 
 ### From Source
 ```bash
-git clone https://github.com/dylanmordaunt/nz-legislation-tool
-cd nz-legislation-tool
+git clone https://github.com/edithatogo/nz-legislation
+cd nz-legislation
 npm install
 npm run build
 npm link  # Install globally
@@ -390,8 +455,8 @@ Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ### Development Setup
 
 ```bash
-git clone https://github.com/dylanmordaunt/nz-legislation-tool
-cd nz-legislation-tool
+git clone https://github.com/edithatogo/nz-legislation
+cd nz-legislation
 npm install
 npm run dev  # Run in development mode
 ```
@@ -414,8 +479,8 @@ Apache License 2.0 - See [LICENSE](LICENSE) for details.
 
 ## 📬 Support
 
-- **Issues:** [GitHub Issues](https://github.com/dylanmordaunt/nz-legislation-tool/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/dylanmordaunt/nz-legislation-tool/discussions)
+- **Issues:** [GitHub Issues](https://github.com/edithatogo/nz-legislation/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/edithatogo/nz-legislation/discussions)
 - **Email:** dylan.mordaunt@vuw.ac.nz
 - **API Documentation:** https://api.legislation.govt.nz/docs/
 
@@ -425,6 +490,6 @@ Apache License 2.0 - See [LICENSE](LICENSE) for details.
 
 **Built with ❤️ for New Zealand research**
 
-[npm](https://www.npmjs.com/package/nz-legislation-tool) | [GitHub](https://github.com/dylanmordaunt/nz-legislation-tool) | [API Docs](https://api.legislation.govt.nz/docs/)
+[npm](https://www.npmjs.com/package/nz-legislation) | [GitHub](https://github.com/edithatogo/nz-legislation) | [API Docs](https://api.legislation.govt.nz/docs/)
 
 </div>
