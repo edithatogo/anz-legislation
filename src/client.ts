@@ -3,14 +3,16 @@
  * Handles HTTP requests, authentication, rate limiting, and caching
  */
 
+import { LRUCache } from 'lru-cache';
 import got from 'got';
 import { z } from 'zod';
 
-import { getConfig } from './config.js';
+import { getConfig } from '@config';
 import {
   createApiError,
   NetworkError,
-} from './errors.js';
+} from '@errors';
+import { logger } from '@utils/logger';
 import {
   LegislationVersionSchema,
   SearchResultsSchema,
@@ -20,15 +22,204 @@ import {
   type SearchResults,
   type Version,
   type Work,
-} from './models/index.js';
+} from '@models';
 
-// Rate limit state
+/**
+ * Cache entry with metadata
+ */
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+  ttl: number;
+}
+
+/**
+ * Cache configuration
+ */
+const CACHE_CONFIG = {
+  // Max number of entries
+  max: 500,
+  // Default TTL: 1 hour
+  defaultTTL: 60 * 60 * 1000,
+  // TTL for search results: 30 minutes
+  searchTTL: 30 * 60 * 1000,
+  // TTL for work details: 2 hours
+  workTTL: 2 * 60 * 60 * 1000,
+  // TTL for versions: 1 hour
+  versionsTTL: 60 * 60 * 1000,
+};
+
+/**
+ * LRU Cache for API responses
+ */
+const cache = new LRUCache<string, CacheEntry<unknown>>({
+  max: CACHE_CONFIG.max,
+  ttl: CACHE_CONFIG.defaultTTL,
+  updateAgeOnGet: false,
+  allowStale: false,
+});
+
+/**
+ * Rate limit state
+ */
 const rateLimitState = {
   remaining: 10000,
   resetTime: Date.now() + 86400000, // 24 hours from now
   burstRemaining: 2000,
   burstResetTime: Date.now() + 300000, // 5 minutes from now
 };
+
+/**
+ * Request batching queue
+ */
+interface BatchRequest {
+  key: string;
+  resolve: (value: unknown) => void;
+  reject: (reason: Error) => void;
+}
+
+const batchQueue = new Map<string, BatchRequest[]>();
+const batchTimeout = 50; // ms to wait before executing batch
+
+/**
+ * Cache metrics for observability
+ */
+interface CacheMetrics {
+  hits: number;
+  misses: number;
+  evictions: number;
+  sets: number;
+}
+
+const cacheMetrics: CacheMetrics = {
+  hits: 0,
+  misses: 0,
+  evictions: 0,
+  sets: 0,
+};
+
+/**
+ * Generate cache key from request parameters
+ */
+function generateCacheKey(endpoint: string, params?: Record<string, string>): string {
+  const paramString = params ? JSON.stringify(params) : '';
+  return `${endpoint}:${paramString}`;
+}
+
+/**
+ * Get data from cache
+ */
+function getFromCache<T>(key: string): T | null {
+  const entry = cache.get(key) as CacheEntry<T> | undefined;
+  if (!entry) {
+    cacheMetrics.misses++;
+    logger.debug('Cache miss', { key });
+    return null;
+  }
+
+  const age = Date.now() - entry.timestamp;
+  if (age > entry.ttl) {
+    cache.delete(key);
+    cacheMetrics.evictions++;
+    cacheMetrics.misses++;
+    logger.debug('Cache expired', { key, age: `${age}ms` });
+    return null;
+  }
+
+  cacheMetrics.hits++;
+  logger.debug('Cache hit', { key, age: `${age}ms`, metrics: cacheMetrics });
+  return entry.data;
+}
+
+/**
+ * Set data in cache
+ */
+function setInCache<T>(key: string, data: T, ttl: number): void {
+  cache.set(key, {
+    data,
+    timestamp: Date.now(),
+    ttl,
+  });
+  cacheMetrics.sets++;
+  logger.debug('Cache set', { key, ttl: `${ttl}ms`, metrics: cacheMetrics });
+}
+
+/**
+ * Clear cache (optionally by pattern)
+ */
+export function clearCache(pattern?: string): void {
+  if (!pattern) {
+    cache.clear();
+    logger.info('Cache cleared');
+    return;
+  }
+  
+  const keys = cache.keys();
+  for (const key of keys) {
+    if (key.includes(pattern)) {
+      cache.delete(key);
+    }
+  }
+  logger.info('Cache cleared', { pattern });
+}
+
+/**
+ * Get cache statistics
+ */
+export function getCacheStats() {
+  const total = cacheMetrics.hits + cacheMetrics.misses;
+  const hitRate = total > 0 ? ((cacheMetrics.hits / total) * 100).toFixed(2) : '0.00';
+  
+  return {
+    size: cache.size,
+    maxSize: CACHE_CONFIG.max,
+    metrics: cacheMetrics,
+    hitRate: `${hitRate}%`,
+    keys: Array.from(cache.keys()).slice(0, 10), // First 10 keys
+  };
+}
+
+/**
+ * Reset cache metrics (for testing)
+ */
+export function resetCacheMetrics() {
+  cacheMetrics.hits = 0;
+  cacheMetrics.misses = 0;
+  cacheMetrics.evictions = 0;
+  cacheMetrics.sets = 0;
+}
+
+/**
+ * Execute batched requests
+ */
+async function executeBatch(queueKey: string): Promise<void> {
+  const requests = batchQueue.get(queueKey);
+  if (!requests || requests.length === 0) return;
+
+  batchQueue.delete(queueKey);
+
+  logger.debug('Executing batched requests', { 
+    queueKey, 
+    count: requests.length,
+  });
+
+  // Execute all requests in the batch concurrently
+  // Note: This is a placeholder for future batch API implementation
+  // The NZ Legislation API doesn't currently support batch endpoints
+  const promises = requests.map(({ resolve, reject }) => ({ resolve, reject }));
+  
+  // Resolve all promises (actual execution happens in individual functions)
+  await Promise.allSettled(promises.map(() => Promise.resolve()));
+}
+
+/**
+ * Schedule batch execution with debouncing
+ */
+function scheduleBatchExecution(queueKey: string): void {
+  setTimeout(() => {
+    executeBatch(queueKey);
+  }, batchTimeout);
+}
 
 /**
  * Check and enforce rate limits
@@ -64,13 +255,30 @@ function checkRateLimit(): void {
 }
 
 /**
- * Helper to get a single header value (handles string[])
+ * Type guard to check if value is a string array
  */
-function getHeaderValue(headers: Record<string, string | string[] | undefined>, name: string): string | undefined {
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item): item is string => typeof item === 'string');
+}
+
+/**
+ * Helper to get a single header value (handles string[] and undefined)
+ * @param headers - Response headers object
+ * @param name - Header name to retrieve
+ * @returns Single header value or undefined
+ */
+function getHeaderValue(
+  headers: Record<string, string | string[] | undefined>,
+  name: string
+): string | undefined {
   const value = headers[name];
-  if (Array.isArray(value)) {
+  
+  // Type guard: check if it's a string array
+  if (isStringArray(value)) {
     return value[0];
   }
+  
+  // If it's a string or undefined, return as-is
   return value;
 }
 
@@ -164,6 +372,15 @@ export async function searchWorks(params: {
   limit?: number;
   offset?: number;
 }): Promise<SearchResults> {
+  const cacheKey = generateCacheKey('search', params as Record<string, string>);
+  
+  // Try cache first
+  const cached = getFromCache<SearchResults>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  logger.startTimer('searchWorks');
   checkRateLimit();
 
   const client = createClient();
@@ -172,17 +389,34 @@ export async function searchWorks(params: {
     const data = await client.get('v0/works', {
       searchParams: {
         ...(params.query && { search_term: params.query }),
-        ...(params.type && { legislation_type: params.type === 'regulation' ? 'secondary_legislation' : params.type }),
+        ...(params.type && {
+          legislation_type: params.type === 'regulation' ? 'secondary_legislation' : params.type,
+        }),
         ...(params.status && { legislation_status: params.status.replace(/-/g, '_') }),
         ...(params.from && { from: params.from }),
         ...(params.to && { to: params.to }),
         ...(params.limit && { per_page: params.limit.toString() }),
-        ...(params.offset && { page: (Math.floor((params.offset || 0) / (params.limit || 20)) + 1).toString() }),
+        ...(params.offset && {
+          page: (Math.floor((params.offset || 0) / (params.limit || 20)) + 1).toString(),
+        }),
       },
     }).json();
 
-    return SearchResultsSchema.parse(data);
+    const result = SearchResultsSchema.parse(data);
+    
+    // Cache the result
+    setInCache(cacheKey, result, CACHE_CONFIG.searchTTL);
+    
+    const duration = logger.endTimer('searchWorks');
+    logger.debug('Search completed', { 
+      results: result.results.length, 
+      total: result.total,
+      duration: `${duration}ms` 
+    });
+    
+    return result;
   } catch (error) {
+    logger.error('Search failed', error instanceof Error ? error : undefined, { params });
     if (error instanceof NetworkError) {
       throw error;
     }
@@ -204,14 +438,32 @@ export async function searchWorks(params: {
  * Get a specific work by ID
  */
 export async function getWork(workId: string): Promise<Work> {
+  const cacheKey = generateCacheKey('work', { id: workId });
+  
+  // Try cache first
+  const cached = getFromCache<Work>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  logger.startTimer('getWork');
   checkRateLimit();
 
   const client = createClient();
 
   try {
     const data = await client.get(`v0/works/${workId}`).json();
-    return WorkSchema.parse(data);
+    const result = WorkSchema.parse(data);
+    
+    // Cache the result
+    setInCache(cacheKey, result, CACHE_CONFIG.workTTL);
+    
+    const duration = logger.endTimer('getWork');
+    logger.debug('Work retrieved', { workId, duration: `${duration}ms` });
+    
+    return result;
   } catch (error) {
+    logger.error('Failed to get work', error instanceof Error ? error : undefined, { workId });
     if (error instanceof NetworkError) {
       throw error;
     }
@@ -233,15 +485,33 @@ export async function getWork(workId: string): Promise<Work> {
  * Get all versions of a work
  */
 export async function getWorkVersions(workId: string): Promise<Version[]> {
+  const cacheKey = generateCacheKey('versions', { workId });
+  
+  // Try cache first
+  const cached = getFromCache<Version[]>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  logger.startTimer('getWorkVersions');
   checkRateLimit();
 
   const client = createClient();
 
   try {
-    const data = await client.get(`v0/works/${workId}/versions`).json() as { results?: unknown[] };
-    const results = Array.isArray(data) ? data : (data.results || []);
-    return z.array(VersionSchema).parse(results);
+    const data = await client.get(`v0/works/${workId}/versions`).json() as { results?: unknown[] } | unknown[];
+    const rawResults = Array.isArray(data) ? data : (data.results || []);
+    const result = z.array(VersionSchema).parse(rawResults);
+    
+    // Cache the result
+    setInCache(cacheKey, result, CACHE_CONFIG.versionsTTL);
+    
+    const duration = logger.endTimer('getWorkVersions');
+    logger.debug('Versions retrieved', { workId, count: result.length, duration: `${duration}ms` });
+    
+    return result;
   } catch (error) {
+    logger.error('Failed to get versions', error instanceof Error ? error : undefined, { workId });
     if (error instanceof NetworkError) {
       throw error;
     }
@@ -263,14 +533,32 @@ export async function getWorkVersions(workId: string): Promise<Version[]> {
  * Get a specific version of a work
  */
 export async function getVersion(versionId: string): Promise<LegislationVersion> {
+  const cacheKey = generateCacheKey('version', { versionId });
+  
+  // Try cache first
+  const cached = getFromCache<LegislationVersion>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
+  logger.startTimer('getVersion');
   checkRateLimit();
 
   const client = createClient();
 
   try {
     const data = await client.get(`v0/versions/${versionId}`).json();
-    return LegislationVersionSchema.parse(data);
+    const result = LegislationVersionSchema.parse(data);
+    
+    // Cache the result
+    setInCache(cacheKey, result, CACHE_CONFIG.versionsTTL);
+    
+    const duration = logger.endTimer('getVersion');
+    logger.debug('Version retrieved', { versionId, duration: `${duration}ms` });
+    
+    return result;
   } catch (error) {
+    logger.error('Failed to get version', error instanceof Error ? error : undefined, { versionId });
     if (error instanceof NetworkError) {
       throw error;
     }

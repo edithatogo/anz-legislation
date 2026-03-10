@@ -11,7 +11,21 @@
     "declaration": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@models": ["src/models/index.ts"],
+      "@models/*": ["src/models/*"],
+      "@commands/*": ["src/commands/*"],
+      "@utils": ["src/utils/index.ts"],
+      "@utils/*": ["src/utils/*"],
+      "@output": ["src/output/index.ts"],
+      "@output/*": ["src/output/*"],
+      "@mcp/*": ["src/mcp/*"],
+      "@client": ["src/client.ts"],
+      "@config": ["src/config.ts"],
+      "@errors": ["src/errors.ts"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
