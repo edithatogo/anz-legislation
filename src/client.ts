@@ -111,7 +111,7 @@ function createClient() {
       'User-Agent': 'nz-legislation-tool/1.0.0',
     },
     searchParams: {
-      apikey: config.apiKey,
+      api_key: config.apiKey,
     },
     retry: {
       limit: 3,
@@ -171,13 +171,13 @@ export async function searchWorks(params: {
   try {
     const data = await client.get('v0/works', {
       searchParams: {
-        ...(params.query && { q: params.query }),
-        ...(params.type && { type: params.type }),
-        ...(params.status && { status: params.status }),
+        ...(params.query && { search_term: params.query }),
+        ...(params.type && { legislation_type: params.type === 'regulation' ? 'secondary_legislation' : params.type }),
+        ...(params.status && { legislation_status: params.status.replace(/-/g, '_') }),
         ...(params.from && { from: params.from }),
         ...(params.to && { to: params.to }),
-        ...(params.limit && { limit: params.limit.toString() }),
-        ...(params.offset && { offset: params.offset.toString() }),
+        ...(params.limit && { per_page: params.limit.toString() }),
+        ...(params.offset && { page: (Math.floor((params.offset || 0) / (params.limit || 20)) + 1).toString() }),
       },
     }).json();
 
@@ -238,8 +238,9 @@ export async function getWorkVersions(workId: string): Promise<Version[]> {
   const client = createClient();
 
   try {
-    const data = await client.get(`v0/works/${workId}/versions`).json();
-    return z.array(VersionSchema).parse(data);
+    const data = await client.get(`v0/works/${workId}/versions`).json() as { results?: unknown[] };
+    const results = Array.isArray(data) ? data : (data.results || []);
+    return z.array(VersionSchema).parse(results);
   } catch (error) {
     if (error instanceof NetworkError) {
       throw error;
