@@ -37,7 +37,6 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           # Use the default security suite to keep alerts actionable.
-          queries: default
           build-mode: none
 
       - name: Perform CodeQL Analysis
