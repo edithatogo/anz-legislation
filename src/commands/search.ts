@@ -48,21 +48,21 @@ export const searchCommand = new Command()
 
       // Validate parameters
       const validation = validateSearchParams(sanitizedOptions);
-      if (!validation.valid || !validation.data) {
+      if (!validation.valid) {
         spinner.stop();
         logger.error('Validation failed', undefined, { errors: validation.errors });
         console.error('❌ Validation errors:');
-        validation.errors?.forEach((err) => {
+        validation.errors.forEach(err => {
           console.error(`  - ${err.field}: ${err.message}`);
         });
         process.exit(3);
       }
 
       const validatedParams = validation.data;
-      logger.debug('Search parameters validated', { 
-        query: validatedParams?.query,
-        type: validatedParams?.type,
-        limit: validatedParams?.limit,
+      logger.debug('Search parameters validated', {
+        query: validatedParams.query,
+        type: validatedParams.type,
+        limit: validatedParams.limit,
       });
 
       const results = await searchWorks({

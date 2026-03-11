@@ -159,11 +159,14 @@ export class BatchExecutor extends EventEmitter {
     let cached = false;
 
     try {
-      const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error(`Request timeout after ${this.timeout}ms`)), this.timeout)
-      );
+      const timeoutPromise = new Promise<never>((_, reject): void => {
+        setTimeout(
+          () => reject(new Error(`Request timeout after ${this.timeout}ms`)),
+          this.timeout
+        );
+      });
 
-      const executePromise = (async () => {
+      const executePromise = (async (): Promise<BatchResult> => {
         let data: unknown;
         const searchParams = request.params as {
           query?: string;

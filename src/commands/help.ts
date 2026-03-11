@@ -127,7 +127,7 @@ export function createInteractiveHelpCommand(): Command {
 
       let selectedIndex = 0;
 
-      const showMenu = () => {
+      const showMenu = (): void => {
         console.clear();
         console.log(chalk.blue.bold('\n📚 NZ Legislation Tool - Interactive Help\n'));
         console.log('Select a topic:\n');
@@ -143,7 +143,7 @@ export function createInteractiveHelpCommand(): Command {
         console.log(chalk.gray('↑/↓ - Navigate | Enter - Select\n'));
       };
 
-      const showTopic = (topic: HelpTopic) => {
+      const showTopic = (topic: HelpTopic): void => {
         console.clear();
         console.log(chalk.blue.bold(`\n📖 ${topic.title}\n`));
         console.log(`${topic.description}\n`);

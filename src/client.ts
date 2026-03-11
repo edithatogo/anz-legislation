@@ -162,7 +162,13 @@ export function clearCache(pattern?: string): void {
 /**
  * Get cache statistics
  */
-export function getCacheStats() {
+export function getCacheStats(): {
+  size: number;
+  maxSize: number;
+  metrics: typeof cacheMetrics;
+  hitRate: string;
+  keys: string[];
+} {
   const total = cacheMetrics.hits + cacheMetrics.misses;
   const hitRate = total > 0 ? ((cacheMetrics.hits / total) * 100).toFixed(2) : '0.00';
 
@@ -178,7 +184,7 @@ export function getCacheStats() {
 /**
  * Reset cache metrics (for testing)
  */
-export function resetCacheMetrics() {
+export function resetCacheMetrics(): void {
   cacheMetrics.hits = 0;
   cacheMetrics.misses = 0;
   cacheMetrics.evictions = 0;
@@ -294,7 +300,7 @@ function createClient(): HttpClientLike {
       limit: 3,
       methods: ['get'],
       statusCodes: [408, 413, 429, 500, 502, 503, 504],
-      calculateDelay: ({ attemptCount, error }) => {
+      calculateDelay: ({ attemptCount, error }): number => {
         if (error.response?.statusCode === 429) {
           const retryAfter = getHeaderValue(error.response.headers, 'retry-after');
           if (retryAfter) {
@@ -307,13 +313,13 @@ function createClient(): HttpClientLike {
     },
     hooks: {
       afterResponse: [
-        response => {
+        (response): typeof response => {
           updateRateLimitState(response.headers);
           return response;
         },
       ],
       beforeError: [
-        error => {
+        (error): typeof error => {
           // Add helpful context to errors
           if (error.response?.statusCode === 401) {
             error.message = 'Authentication failed. Please check your API key.';
@@ -642,7 +648,12 @@ export async function getVersion(versionId: string): Promise<LegislationVersion>
 /**
  * Get rate limit status
  */
-export function getRateLimitStatus() {
+export function getRateLimitStatus(): {
+  remaining: number;
+  resetTime: Date;
+  burstRemaining: number;
+  burstResetTime: Date;
+} {
   return {
     remaining: rateLimitState.remaining,
     resetTime: new Date(rateLimitState.resetTime),

@@ -282,7 +282,7 @@ export class StreamExporter {
    */
   private formatCsvRow(work: Work): string {
     // Escape CSV fields
-    const escape = (str: string) => {
+    const escape = (str: string): string => {
       if (str.includes(',') || str.includes('"') || str.includes('\n')) {
         return `"${str.replace(/"/g, '""')}"`;
       }
@@ -371,7 +371,7 @@ export function createPaginatedStream(
 
   return new Readable({
     objectMode: true,
-    read() {
+    read(): void {
       if (pending) {
         return;
       }
@@ -381,7 +381,7 @@ export function createPaginatedStream(
         return;
       }
 
-      pending = (async () => {
+      pending = (async (): Promise<void> => {
         try {
           const results = await searchWorks({
             ...params,

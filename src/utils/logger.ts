@@ -257,13 +257,13 @@ export const logger = new Logger();
 /**
  * Set logger verbose mode from CLI
  */
-export function setLoggerVerbose(verbose: boolean) {
+export function setLoggerVerbose(verbose: boolean): void {
   logger.setVerbose(verbose);
 }
 
 /**
  * Set logger quiet mode
  */
-export function setLoggerQuiet(quiet: boolean) {
+export function setLoggerQuiet(quiet: boolean): void {
   logger.setQuiet(quiet);
 }

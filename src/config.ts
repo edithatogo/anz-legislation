@@ -237,7 +237,13 @@ export function getConfigPath(): string {
 /**
  * Get configuration validation status
  */
-export function getConfigValidationStatus() {
+export function getConfigValidationStatus(): {
+  valid: boolean;
+  errors?: ConfigError[];
+  hasApiKey: boolean;
+  isHttps: boolean;
+  source: 'environment' | 'file';
+} {
   const config = getConfig();
   const validation = validateConfig(config);
 
