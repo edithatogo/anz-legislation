@@ -62,7 +62,7 @@ export const LimitSchema = z.string()
   .default('25')
   .transform((val) => {
     const num = parseInt(val, 10);
-    if (isNaN(num)) return 25;
+    if (isNaN(num)) {return 25;}
     return Math.min(Math.max(num, 1), 100); // Clamp between 1 and 100
   });
 
@@ -73,7 +73,7 @@ export const OffsetSchema = z.string()
   .default('0')
   .transform((val) => {
     const num = parseInt(val, 10);
-    if (isNaN(num)) return 0;
+    if (isNaN(num)) {return 0;}
     return Math.max(num, 0); // Ensure non-negative
   });
 
@@ -148,7 +148,7 @@ export const TimeoutSchema = z.string()
   .default('30000')
   .transform((val) => {
     const num = parseInt(val, 10);
-    if (isNaN(num)) return 30000;
+    if (isNaN(num)) {return 30000;}
     return Math.min(Math.max(num, 1000), 300000); // Clamp between 1s and 5min
   });
 

@@ -7,16 +7,16 @@
 import chalk from 'chalk';
 import { Command } from 'commander';
 
-import { citeCommand } from './commands/cite.js';
+import { batchCommand } from './commands/batch.js';
 import { cacheCommand } from './commands/cache.js';
+import { citeCommand } from './commands/cite.js';
 import { configCommand } from './commands/config.js';
 import { exportCommand } from './commands/export.js';
-import { getCommand } from './commands/get.js';
-import { searchCommand } from './commands/search.js';
-import { batchCommand } from './commands/batch.js';
-import { streamCommand } from './commands/stream.js';
-import { createInteractiveHelpCommand, createContextualHelpCommand } from './commands/help.js';
 import { createGenerateCommand } from './commands/generate.js';
+import { getCommand } from './commands/get.js';
+import { createInteractiveHelpCommand, createContextualHelpCommand } from './commands/help.js';
+import { searchCommand } from './commands/search.js';
+import { streamCommand } from './commands/stream.js';
 import { getConfig } from './config.js';
 import {
   ApplicationError,

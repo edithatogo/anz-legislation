@@ -4,8 +4,9 @@
  * Run with: nzlegislation-mcp
  */
 
-import { startServer } from './mcp/server.js';
 import { logger } from '@utils/logger';
+
+import { startServer } from './mcp/server.js';
 
 let serverInstance: unknown = null;
 

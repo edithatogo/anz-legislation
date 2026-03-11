@@ -68,7 +68,7 @@ function registerSearchTool(server: McpServer): void {
         .regex(/^\d{4}-\d{2}-\d{2}$/)
         .transform((val) => {
           const date = new Date(val);
-          if (isNaN(date.getTime())) throw new Error('Invalid date format');
+          if (isNaN(date.getTime())) {throw new Error('Invalid date format');}
           return val;
         })
         .optional()
@@ -77,7 +77,7 @@ function registerSearchTool(server: McpServer): void {
         .regex(/^\d{4}-\d{2}-\d{2}$/)
         .transform((val) => {
           const date = new Date(val);
-          if (isNaN(date.getTime())) throw new Error('Invalid date format');
+          if (isNaN(date.getTime())) {throw new Error('Invalid date format');}
           return val;
         })
         .optional()

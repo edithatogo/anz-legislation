@@ -4,11 +4,12 @@
  * Generate templates for commands, models, tests, and documentation
  */
 
-import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
-import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+
+import chalk from 'chalk';
+import { Command } from 'commander';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, '..');
