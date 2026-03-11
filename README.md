@@ -11,6 +11,17 @@
 
 A fast, friendly command-line tool for researchers, legal professionals, and anyone working with NZ legislation. Get your research done faster—with less copying and pasting.
 
+**Package links:** [npm package](https://www.npmjs.com/package/nz-legislation-tool) · [GitHub repository](https://github.com/edithatogo/nz-legislation)
+
+---
+
+## 📦 Package Registries
+
+- **Primary npm package:** [`nz-legislation-tool`](https://www.npmjs.com/package/nz-legislation-tool)
+- **GitHub Packages mirror:** `@edithatogo/nz-legislation-tool`
+
+The GitHub repository "Packages" area is populated by GitHub Packages publishes, not by the public npmjs.com listing. This repository includes a workflow to publish a scoped GitHub Packages mirror so the repo can show a package entry there as well.
+
 ---
 
 ## ✨ What You Can Do
