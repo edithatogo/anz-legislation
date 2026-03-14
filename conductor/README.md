@@ -29,13 +29,15 @@ Each active track should have:
 Optional supporting files such as `spec.md` or `PROGRESS_LOG.md` are encouraged
 when they materially improve traceability.
 
-## Current Active Tracks
+## Current Track Inventory
 
-- `release-governance-modernization`
-- `documentation-site-completion`
-- `documentation-site-enhancements`
-- `anz-brand-transition`
-- `legal-metadata-standards-alignment`
+Use `status.md` as the live status source. The current inventory on `next` is:
+
+- `anz-brand-transition` - active
+- `documentation-site-enhancements` - pending
+- `documentation-site-completion` - complete
+- `legal-metadata-standards-alignment` - complete
+- `release-governance-modernization` - complete
 
 ## Operating Rule
 
