@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "nz-legislation-tool": "1.2.0-next.0"
+  },
+  "changesets": ["blue-forks-cheat", "bright-boats-confess", "fifty-towns-care", "loud-camels-share", "tiny-eggs-smell"]
+}
