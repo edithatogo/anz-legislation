@@ -284,7 +284,7 @@ nzlegislation ${docName} --verbose
 ## API Reference
 
 - [API Documentation](https://api.legislation.govt.nz/docs/)
-- [GitHub Repository](https://github.com/dylanmordaunt/nz-legislation-tool)
+- [GitHub Repository](https://github.com/edithatogo/anz-legislation)
 
 ---
 

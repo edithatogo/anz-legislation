@@ -54,7 +54,7 @@ The legacy binary names remain available during the compatibility window.
 
 ## Repository
 
-Current repository: ${sourceManifest.repository?.url ?? 'https://github.com/edithatogo/nz-legislation.git'}
+Current repository: ${sourceManifest.repository?.url ?? 'https://github.com/edithatogo/anz-legislation.git'}
 `;
 
 fs.rmSync(outputDir, { recursive: true, force: true });

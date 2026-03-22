@@ -44,7 +44,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/anz-legislation/tree/main/docs-site/',
           routeBasePath: '/', // Serve docs at root
         },
         blog: false, // Disable blog for documentation-only site
@@ -86,7 +86,7 @@ const config = {
             label: 'Setup Guide',
           },
           {
-            href: 'https://github.com/edithatogo/nz-legislation',
+            href: 'https://github.com/edithatogo/anz-legislation',
             label: 'GitHub',
             position: 'right',
           },
@@ -148,11 +148,11 @@ const config = {
             items: [
               {
                 label: 'GitHub Discussions',
-                href: 'https://github.com/edithatogo/nz-legislation/discussions',
+                href: 'https://github.com/edithatogo/anz-legislation/discussions',
               },
               {
                 label: 'GitHub Issues',
-                href: 'https://github.com/edithatogo/nz-legislation/issues',
+                href: 'https://github.com/edithatogo/anz-legislation/issues',
               },
             ],
           },
@@ -161,7 +161,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/edithatogo/nz-legislation',
+                href: 'https://github.com/edithatogo/anz-legislation',
               },
               {
                 label: 'NZ Legislation API',

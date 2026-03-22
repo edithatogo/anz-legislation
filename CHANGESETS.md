@@ -103,7 +103,7 @@ Configuration is in `.changeset/config.json`:
 
 ```json
 {
-  "changelog": ["@changesets/changelog-github", { "repo": "edithatogo/nz-legislation" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "edithatogo/anz-legislation" }],
   "commit": false,
   "access": "public",
   "baseBranch": "main",

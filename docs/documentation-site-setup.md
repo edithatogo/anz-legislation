@@ -200,12 +200,12 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/anz-legislation/tree/main/docs-site/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/anz-legislation/tree/main/docs-site/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -239,7 +239,7 @@ const config = {
             label: 'Developer Guide',
           },
           {
-            href: 'https://github.com/edithatogo/nz-legislation',
+            href: 'https://github.com/edithatogo/anz-legislation',
             label: 'GitHub',
             position: 'right',
           },
@@ -266,7 +266,7 @@ const config = {
             items: [
               {
                 label: 'GitHub Discussions',
-                href: 'https://github.com/edithatogo/nz-legislation/discussions',
+                href: 'https://github.com/edithatogo/anz-legislation/discussions',
               },
             ],
           },
@@ -275,7 +275,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/edithatogo/nz-legislation',
+                href: 'https://github.com/edithatogo/anz-legislation',
               },
             ],
           },

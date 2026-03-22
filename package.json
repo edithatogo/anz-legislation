@@ -54,13 +54,13 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/edithatogo/nz-legislation.git"
+    "url": "https://github.com/edithatogo/anz-legislation.git"
   },
   "packageManager": "pnpm@10.29.3",
   "bugs": {
-    "url": "https://github.com/edithatogo/nz-legislation/issues"
+    "url": "https://github.com/edithatogo/anz-legislation/issues"
   },
-  "homepage": "https://github.com/edithatogo/nz-legislation#readme",
+  "homepage": "https://github.com/edithatogo/anz-legislation#readme",
   "engines": {
     "node": ">=18.0.0"
   },

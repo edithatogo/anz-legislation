@@ -688,8 +688,8 @@ I've already tried: Re-setting API key
 
 ### Where to Ask
 
-- 🐛 **Bug reports:** [GitHub Issues](https://github.com/edithatogo/nz-legislation-tool/issues)
-- 💬 **Questions:** [GitHub Discussions](https://github.com/edithatogo/nz-legislation-tool/discussions)
+- 🐛 **Bug reports:** [GitHub Issues](https://github.com/edithatogo/anz-legislation/issues)
+- 💬 **Questions:** [GitHub Discussions](https://github.com/edithatogo/anz-legislation/discussions)
 - 📧 **Email:** dylan.mordaunt@vuw.ac.nz
 
 **Response time:** Within 2 business days

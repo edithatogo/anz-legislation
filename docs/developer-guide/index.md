@@ -56,7 +56,7 @@ compatibility transition.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/edithatogo/nz-legislation
+git clone https://github.com/edithatogo/anz-legislation
 cd nz-legislation
 ```
 
@@ -264,16 +264,16 @@ We welcome contributions! Here's how to get started:
 
 Look for issues labeled:
 
-- [`good first issue`](https://github.com/edithatogo/nz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-- [`help wanted`](https://github.com/edithatogo/nz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+- [`good first issue`](https://github.com/edithatogo/anz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- [`help wanted`](https://github.com/edithatogo/anz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 ### 2. Fork and Clone
 
 ```bash
 # Fork on GitHub, then:
-git clone https://github.com/YOUR_USERNAME/nz-legislation
+git clone https://github.com/YOUR_USERNAME/anz-legislation
 cd nz-legislation
-git remote add upstream https://github.com/edithatogo/nz-legislation
+git remote add upstream https://github.com/edithatogo/anz-legislation
 ```
 
 ### 3. Create a Branch
@@ -319,8 +319,8 @@ For complete contributing guide, see [Contributing Guide](./contributing.md).
 
 **Developer Questions:**
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/nz-legislation/issues)
-- 💡 **Suggest a feature** - [Start a discussion](https://github.com/edithatogo/nz-legislation/discussions)
+- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/anz-legislation/issues)
+- 💡 **Suggest a feature** - [Start a discussion](https://github.com/edithatogo/anz-legislation/discussions)
 - 📧 **Email:** dylan.mordaunt@vuw.ac.nz
 
 **Response time:** We aim to respond within 2 business days.
@@ -329,7 +329,7 @@ For complete contributing guide, see [Contributing Guide](./contributing.md).
 
 ## ♿ Accessibility
 
-This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
+This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/anz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
 
 **Features:**
 

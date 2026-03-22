@@ -18,7 +18,7 @@ Examples:
   $ ${invokedCliName} config --show
   $ ${invokedCliName} cache --stats
 
-Documentation: https://github.com/edithatogo/nz-legislation
+Documentation: https://github.com/edithatogo/anz-legislation
 Also available as: ${alternateCliName}
 NZ API Documentation: https://api.legislation.govt.nz/docs/`;
 }

@@ -625,8 +625,8 @@ Before asking for help, try these:
 **Still stuck?**
 
 1. **Check the FAQ:** [faq.md](./faq.md) - 36 common questions answered
-2. **Search issues:** [GitHub Issues](https://github.com/edithatogo/nz-legislation-tool/issues)
-3. **Ask in discussions:** [GitHub Discussions](https://github.com/edithatogo/nz-legislation-tool/discussions)
+2. **Search issues:** [GitHub Issues](https://github.com/edithatogo/anz-legislation/issues)
+3. **Ask in discussions:** [GitHub Discussions](https://github.com/edithatogo/anz-legislation/discussions)
 4. **Email:** dylan.mordaunt@vuw.ac.nz
 
 **When asking for help, include:**
@@ -640,7 +640,7 @@ Before asking for help, try these:
 
 ## ♿ Accessibility
 
-This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation-tool/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
+This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/anz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
 
 **Features:**
 
