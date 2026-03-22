@@ -1,5 +1,12 @@
 # ANZ Legislation
 
+## 1.2.1
+
+### Patch Changes
+
+- f44e1fa: Update package metadata, runtime help text, and current support links to the
+  renamed `edithatogo/anz-legislation` repository.
+
 ## 1.2.0
 
 ### Minor Changes
