@@ -1,6 +1,6 @@
 # Conductor Status
 
-Last reviewed: 2026-03-14
+Last reviewed: 2026-03-22
 
 ## Summary
 
@@ -21,7 +21,7 @@ See also:
 | `release-governance-modernization`   | COMPLETE | Fully documented and marked complete                            |
 | `documentation-site-enhancements`    | PENDING  | Optional post-launch work not yet started                       |
 | `documentation-site-completion`      | COMPLETE | Parent completion record restored                               |
-| `anz-brand-transition`               | ACTIVE   | Implementation in progress; ANZ-first migration is underway     |
+| `anz-brand-transition`               | ACTIVE   | Compatibility window active; repo/package migration is live     |
 | `legal-metadata-standards-alignment` | COMPLETE | Canonical standards layer documented and implemented additively |
 
 ## Archived Tracks
@@ -53,13 +53,18 @@ detail under `research-conductor` instead of this product-side Conductor tree.
   than an implicit future rename.
 - ANZ transition planning is complete across naming policy, inventory, package
   strategy, repo/docs migration, and deprecation criteria.
+- The repository now lives at `edithatogo/anz-legislation`.
+- Both npm package names are now published at `1.2.1`:
+  `nz-legislation-tool` and `anz-legislation`.
+- GitHub release `v1.2.1` now exists for the new repository.
+- Trusted publishing is configured for future automated releases.
 - Legal metadata standards alignment is now tracked as an explicit architecture
   effort rather than an implicit future refactor.
 - Legal metadata standards alignment now has an accepted ADR, canonical
   schemas, provider mapping, canonical-backed legacy adapters, additive export
   metadata, and a schema.org publication helper.
-- The product still ships as `nz-legislation-tool`, and package or binary
-  renaming has not started yet.
+- The product still ships on the legacy-compatible `nz-legislation-tool` path,
+  but `anz-legislation` is now also published and supported.
 - The provider model is coherent internally, and a standards-aligned canonical
   legal metadata layer now exists additively without breaking the CLI surface.
 - The former template track has been moved out of active inventory to
@@ -69,11 +74,10 @@ detail under `research-conductor` instead of this product-side Conductor tree.
 
 ## Recommended Next Cleanup
 
-1. Start ANZ transition implementation with reviewed operational PRs, beginning
-   with safe ANZ-first product-copy edits that do not rename package, CLI, MCP,
-   environment variables, or config paths.
-2. Track future status changes by updating `metadata.json` alongside each
-   active track’s `index.md` and `plan.md`.
+1. Track the ANZ compatibility window explicitly, including when legacy package
+   and binary names can be retired.
+2. Keep `metadata.json`, `index.md`, and `plan.md` aligned as the transition
+   moves from migration to deprecation.
 3. Promote backlog entries back into `conductor/tracks` only when they gain a
    real owner, scope, and plan.
 4. Open a follow-on track only when source-derived legal relationship extraction

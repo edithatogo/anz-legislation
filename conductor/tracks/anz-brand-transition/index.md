@@ -14,9 +14,8 @@
 
 ## Status
 
-🟡 IN PROGRESS - Planning phases are complete and implementation has now begun
-across safe copy surfaces, alias-aware command presentation, and smoke-test
-coverage
+🟡 IN PROGRESS - Repository migration, dual-package publishing, GitHub release
+setup, and trusted publishing are now live; the compatibility window is active
 
 ## Summary
 
@@ -38,20 +37,23 @@ is in `package-cli-strategy.md`. The repository, documentation, site, MCP, and
 support-link migration checklist is in `repo-docs-migration.md`, and the
 deprecation completion criteria are in `deprecation-plan.md`.
 
-Implementation is now underway. Safe public-copy surfaces have been moved to
-`ANZ Legislation`, stale current-guidance repository links have been corrected
-to `edithatogo/nz-legislation`, CLI and MCP presentation now reflect the
-invoked alias when users run the ANZ binaries, and a non-Vitest smoke test now
-verifies alias-aware presentation behavior in this environment.
+Implementation is now well underway. Safe public-copy surfaces have been moved
+to `ANZ Legislation`, current-guidance repository links have been migrated to
+`edithatogo/anz-legislation`, CLI and MCP presentation reflect the invoked
+alias when users run the ANZ binaries, and smoke coverage exists for both
+alias-aware presentation and the generated sibling-package artifact.
 
-The next step is no longer to start implementation. It is to continue it in
-reversible phases against these approved track artifacts.
+The repository rename is no longer prospective. The new GitHub repository
+exists, both npm package names are published, the `v1.2.1` GitHub release is
+live, and trusted publishing is configured for future releases. The track is
+still in progress because the compatibility window remains active and legacy
+name retirement has not yet been executed.
 
 ## Implementation Progress
 
 - public-facing docs and guidance now present the product as `ANZ Legislation`
   where safe
-- current-guidance repository links now point to `edithatogo/nz-legislation`
+- current-guidance repository links now point to `edithatogo/anz-legislation`
 - package documentation now accurately states that `nz-legislation-tool`
   remains the published package while both legacy and ANZ binaries are exposed
 - CLI help, warning text, and examples now adapt to the invoked binary name
@@ -65,6 +67,12 @@ reversible phases against these approved track artifacts.
 - release automation now includes a generated sibling-package path for
   `anz-legislation`, with local smoke coverage for the publish artifact before
   the compatibility window starts
+- the repository now lives at `edithatogo/anz-legislation`
+- both npm package names are now published at `1.2.1`:
+  `nz-legislation-tool` and `anz-legislation`
+- the GitHub release trail is now live with `v1.2.1`
+- npm trusted publishing is configured for both package names so future
+  releases can return to automated GitHub-based publishing
 
 ## Intended Outcome
 
@@ -87,4 +95,4 @@ phase exists in the plan, and that the phase contains its own review gate.
 ---
 
 **Track ID:** `anz-brand-transition`
-**Last Updated:** 2026-03-21
+**Last Updated:** 2026-03-22

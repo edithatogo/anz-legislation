@@ -3,7 +3,7 @@
 **Track ID:** anz-brand-transition  
 **Status:** 🟡 IN PROGRESS  
 **Priority:** 🔴 HIGH  
-**Last Updated:** 2026-03-21
+**Last Updated:** 2026-03-22
 
 ---
 
@@ -205,7 +205,7 @@ so far includes:
 - safe public-copy updates across README, user docs, developer docs, and
   documentation-site guidance
 - correction of stale current-guidance repository links to
-  `edithatogo/nz-legislation`
+  `edithatogo/anz-legislation`
 - clarification that the published package remains `nz-legislation-tool` while
   both legacy and ANZ binaries are exposed
 - alias-aware CLI help, examples, and warning text based on the invoked binary
@@ -220,6 +220,12 @@ so far includes:
 - generated sibling-package automation via `scripts/prepare-anz-package.mjs`
   and `scripts/publish-anz-package.mjs`, plus a local smoke test in
   `scripts/smoke-anz-package.mjs`
+- creation of the `edithatogo/anz-legislation` repository, workflow
+  permissions setup, stable/prerelease release automation, and the live
+  `v1.2.1` GitHub release
+- manual bootstrap publication of `nz-legislation-tool@1.2.1` and
+  `anz-legislation@1.2.1`, followed by trusted publisher configuration for
+  both package names
 
 ---
 
@@ -230,5 +236,5 @@ This track is complete when:
 1. the repository identity is migrated to `anz-legislation`
 2. the product identity is publicly presented as `ANZ Legislation`
 3. package, CLI, MCP, and docs naming all have a documented canonical state
-4. a compatibility window is executed rather than implied
+4. the compatibility window is executed to completion, not merely started
 5. each phase has been closed with the scripted Conductor review gate
