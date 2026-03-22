@@ -9,7 +9,7 @@ describe('presentation helpers', () => {
     expect(footer).toContain('$ anzlegislation search --query "health" --type act');
     expect(footer).toContain('$ anzlegislation config --show');
     expect(footer).toContain('Also available as: nzlegislation');
-    expect(footer).toContain('Documentation: https://github.com/edithatogo/nz-legislation');
+    expect(footer).toContain('Documentation: https://github.com/edithatogo/anz-legislation');
   });
 
   it('builds MCP startup messages with invoked and alternate aliases', () => {
