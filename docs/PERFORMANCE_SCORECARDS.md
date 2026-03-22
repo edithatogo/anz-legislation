@@ -1,6 +1,7 @@
 # Performance Scorecards
 
-This document defines the performance scorecard system for tracking and evaluating NZ Legislation Tool performance.
+This document defines the performance scorecard system for tracking and
+evaluating ANZ Legislation performance.
 
 ## Scorecard System Overview
 

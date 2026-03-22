@@ -6,7 +6,9 @@
 
 ## Overview
 
-This guide provides comprehensive testing and validation procedures to ensure the NZ Legislation Tool documentation is accurate, functional, accessible, and high-quality before launch.
+This guide provides comprehensive testing and validation procedures to ensure
+the ANZ Legislation documentation is accurate, functional, accessible, and
+high-quality before launch.
 
 **Last Updated:** 2026-03-10  
 **Version:** 1.0.0  
@@ -903,7 +905,7 @@ Features:
 Steps:
 
 1. Install Node.js 18+
-2. Run `npm install -g nz-legislation-tool`
+2. Run `npm install -g anz-legislation`
 3. Set your API key
 4. Test with a search
 ```

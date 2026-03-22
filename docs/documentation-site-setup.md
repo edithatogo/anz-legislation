@@ -1,12 +1,18 @@
 # Documentation Site Setup Guide
 
-**How to set up and deploy the NZ Legislation Tool documentation website**
+**How to set up and deploy the ANZ Legislation documentation website**
 
 ---
 
 ## Overview
 
-This guide walks you through setting up a professional documentation website for the NZ Legislation Tool using Docusaurus v2, a modern static site generator optimized for documentation.
+This guide walks you through setting up a professional documentation website
+for ANZ Legislation using Docusaurus v2, a modern static site generator
+optimized for documentation.
+
+The product is now presented publicly as **ANZ Legislation**. Repository and
+package paths in examples use the current `nz-legislation` /
+`nz-legislation-tool` surfaces during the compatibility transition.
 
 **Why Docusaurus?**
 
@@ -163,18 +169,18 @@ const { themes } = require('lightningcss');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'NZ Legislation Tool',
+  title: 'ANZ Legislation',
   tagline: 'Search and retrieve New Zealand legislation data',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://edithatogo.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/nz-legislation-tool/',
+  baseUrl: '/nz-legislation/',
 
   // GitHub pages deployment
   organizationName: 'edithatogo',
-  projectName: 'nz-legislation-tool',
+  projectName: 'nz-legislation',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -194,12 +200,12 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation-tool/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation-tool/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -214,9 +220,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'NZ Legislation Tool',
+        title: 'ANZ Legislation',
         logo: {
-          alt: 'NZ Legislation Tool Logo',
+          alt: 'ANZ Legislation Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -233,7 +239,7 @@ const config = {
             label: 'Developer Guide',
           },
           {
-            href: 'https://github.com/edithatogo/nz-legislation-tool',
+            href: 'https://github.com/edithatogo/nz-legislation',
             label: 'GitHub',
             position: 'right',
           },
@@ -260,7 +266,7 @@ const config = {
             items: [
               {
                 label: 'GitHub Discussions',
-                href: 'https://github.com/edithatogo/nz-legislation-tool/discussions',
+                href: 'https://github.com/edithatogo/nz-legislation/discussions',
               },
             ],
           },
@@ -269,12 +275,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/edithatogo/nz-legislation-tool',
+                href: 'https://github.com/edithatogo/nz-legislation',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} NZ Legislation Tool. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ANZ Legislation. Built with Docusaurus.`,
       },
       prism: {
         theme: require('prism-react-renderer/themes/github'),
@@ -386,7 +392,7 @@ Create `docs-site/src/css/custom.css`:
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Custom styles for NZ Legislation Tool */
+/* Custom styles for ANZ Legislation */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -451,7 +457,7 @@ const config = {
 npm run docs:deploy
 ```
 
-**URL:** `https://edithatogo.github.io/nz-legislation-tool/`
+**URL:** `https://edithatogo.github.io/nz-legislation/`
 
 ---
 

@@ -1,6 +1,7 @@
 # Performance Metrics Interpretation Guide
 
-This guide helps you understand and interpret the performance metrics collected by the NZ Legislation Tool audit system.
+This guide helps you understand and interpret the performance metrics collected
+by the ANZ Legislation audit system.
 
 ---
 

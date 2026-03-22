@@ -1,6 +1,7 @@
 # Performance Dashboard
 
-This document provides a comprehensive performance dashboard for the NZ Legislation Tool, tracking key performance metrics over time.
+This document provides a comprehensive performance dashboard for ANZ
+Legislation, tracking key performance metrics over time.
 
 ## Current Performance Baselines
 

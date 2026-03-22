@@ -126,6 +126,10 @@ jobs:
           npm publish --provenance --access public --tag next
           echo "published=true" >> "$GITHUB_OUTPUT"
 
+      - name: Publish sibling ANZ prerelease package
+        if: steps.publish.outputs.published == 'true'
+        run: node scripts/publish-anz-package.mjs --tag next
+
       - name: Leave prerelease mode
         if: always() && steps.publish_mode.outputs.enabled == 'true'
         run: pnpm exec changeset pre exit || true
@@ -142,3 +146,5 @@ jobs:
         run: |
           echo "Published prerelease package:"
           echo "${{ steps.publish.outputs.package_name }}@${{ steps.publish.outputs.package_version }}"
+          echo "Published sibling prerelease package:"
+          echo "anz-legislation@${{ steps.publish.outputs.package_version }}"

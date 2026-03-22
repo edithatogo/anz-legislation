@@ -1,6 +1,6 @@
-# Docusaurus Configuration for NZ Legislation Tool
+# Docusaurus Configuration for ANZ Legislation
 
-**Ready-to-use configuration for documentation site**
+**Ready-to-use configuration for the ANZ Legislation documentation site**
 
 ---
 
@@ -13,18 +13,18 @@ const { themes } = require('lightningcss');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'NZ Legislation Tool',
-  tagline: 'Search and retrieve New Zealand legislation data',
+  title: 'ANZ Legislation',
+  tagline: 'Search and retrieve legislation data across New Zealand and Australia',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://edithatogo.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/nz-legislation-tool/',
+  baseUrl: '/nz-legislation/',
 
   // GitHub pages deployment
   organizationName: 'edithatogo',
-  projectName: 'nz-legislation-tool',
+  projectName: 'nz-legislation',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -44,7 +44,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to be your repository's URL
-          editUrl: 'https://github.com/edithatogo/nz-legislation-tool/tree/main/docs-site/',
+          editUrl: 'https://github.com/edithatogo/nz-legislation/tree/main/docs-site/',
           routeBasePath: '/', // Serve docs at root
         },
         blog: false, // Disable blog for documentation-only site
@@ -61,9 +61,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'NZ Legislation Tool',
+        title: 'ANZ Legislation',
         logo: {
-          alt: 'NZ Legislation Tool Logo',
+          alt: 'ANZ Legislation Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -86,7 +86,7 @@ const config = {
             label: 'Setup Guide',
           },
           {
-            href: 'https://github.com/edithatogo/nz-legislation-tool',
+            href: 'https://github.com/edithatogo/nz-legislation',
             label: 'GitHub',
             position: 'right',
           },
@@ -148,11 +148,11 @@ const config = {
             items: [
               {
                 label: 'GitHub Discussions',
-                href: 'https://github.com/edithatogo/nz-legislation-tool/discussions',
+                href: 'https://github.com/edithatogo/nz-legislation/discussions',
               },
               {
                 label: 'GitHub Issues',
-                href: 'https://github.com/edithatogo/nz-legislation-tool/issues',
+                href: 'https://github.com/edithatogo/nz-legislation/issues',
               },
             ],
           },
@@ -161,7 +161,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/edithatogo/nz-legislation-tool',
+                href: 'https://github.com/edithatogo/nz-legislation',
               },
               {
                 label: 'NZ Legislation API',
@@ -170,7 +170,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} NZ Legislation Tool. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ANZ Legislation. Built with Docusaurus.`,
       },
       prism: {
         theme: require('prism-react-renderer/themes/github'),

@@ -1,12 +1,15 @@
 # Architecture Overview
 
-**System design and structure of the NZ Legislation Tool**
+**System design and structure of ANZ Legislation**
 
 ---
 
 ## Overview
 
-The NZ Legislation Tool is a TypeScript-based command-line interface (CLI) that provides programmatic access to New Zealand legislation data through the official NZ Legislation API.
+ANZ Legislation is a TypeScript-based command-line interface (CLI) that
+provides programmatic access to New Zealand legislation data through the
+official NZ Legislation API, with Australian support being rolled out in staged
+prerelease form.
 
 **Key Design Principles:**
 

@@ -1,6 +1,6 @@
 # Developer Guide
 
-**For contributors and developers building with the NZ Legislation Tool**
+**For contributors and developers building with ANZ Legislation**
 
 ---
 
@@ -8,10 +8,14 @@
 
 This guide is for developers who want to:
 
-- Contribute to the NZ Legislation Tool
+- Contribute to ANZ Legislation
 - Integrate the API into their own applications
 - Understand the architecture and codebase
 - Set up a development environment
+
+The product is now presented publicly as **ANZ Legislation**. Package and CLI
+identifiers remain on the legacy `nz-legislation-tool` surface during the
+compatibility transition.
 
 **New to the tool?** Start with the [User Guide](../user-guide/) first.
 
@@ -52,8 +56,8 @@ This guide is for developers who want to:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/edithatogo/nz-legislation-tool
-cd nz-legislation-tool
+git clone https://github.com/edithatogo/nz-legislation
+cd nz-legislation
 ```
 
 ### 2. Install Dependencies
@@ -89,7 +93,7 @@ npm run typecheck
 
 ## 🏗️ Architecture Overview
 
-The NZ Legislation Tool is built with TypeScript using modern ES modules.
+ANZ Legislation is built with TypeScript using modern ES modules.
 
 ### High-Level Structure
 
@@ -260,16 +264,16 @@ We welcome contributions! Here's how to get started:
 
 Look for issues labeled:
 
-- [`good first issue`](https://github.com/edithatogo/nz-legislation-tool/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-- [`help wanted`](https://github.com/edithatogo/nz-legislation-tool/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+- [`good first issue`](https://github.com/edithatogo/nz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- [`help wanted`](https://github.com/edithatogo/nz-legislation/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 ### 2. Fork and Clone
 
 ```bash
 # Fork on GitHub, then:
-git clone https://github.com/YOUR_USERNAME/nz-legislation-tool
-cd nz-legislation-tool
-git remote add upstream https://github.com/edithatogo/nz-legislation-tool
+git clone https://github.com/YOUR_USERNAME/nz-legislation
+cd nz-legislation
+git remote add upstream https://github.com/edithatogo/nz-legislation
 ```
 
 ### 3. Create a Branch
@@ -315,8 +319,8 @@ For complete contributing guide, see [Contributing Guide](./contributing.md).
 
 **Developer Questions:**
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/nz-legislation-tool/issues)
-- 💡 **Suggest a feature** - [Start a discussion](https://github.com/edithatogo/nz-legislation-tool/discussions)
+- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/nz-legislation/issues)
+- 💡 **Suggest a feature** - [Start a discussion](https://github.com/edithatogo/nz-legislation/discussions)
 - 📧 **Email:** dylan.mordaunt@vuw.ac.nz
 
 **Response time:** We aim to respond within 2 business days.
@@ -325,7 +329,7 @@ For complete contributing guide, see [Contributing Guide](./contributing.md).
 
 ## ♿ Accessibility
 
-This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation-tool/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
+This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
 
 **Features:**
 

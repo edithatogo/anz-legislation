@@ -49,7 +49,7 @@ export const configCommand = new Command()
     }
 
     // Interactive setup
-    console.log('NZ Legislation CLI - Setup');
+    console.log('ANZ Legislation CLI - Setup');
     console.log('─'.repeat(50));
 
     if (hasApiKey()) {

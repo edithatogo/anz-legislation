@@ -6,7 +6,9 @@
 
 ## Overview
 
-This guide walks you through a complete research workflow using the NZ Legislation Tool. Perfect for academics, policy analysts, and researchers working on health policy, social policy, or any legislation-related research.
+This guide walks you through a complete research workflow using ANZ
+Legislation. It is designed for academics, policy analysts, and researchers
+working on health policy, social policy, or any legislation-related research.
 
 **Time:** 30-60 minutes for a typical research project  
 **Output:** Dataset ready for analysis, citations for your paper
@@ -285,7 +287,7 @@ For reproducibility, include:
 ## Data Sources
 
 Legislation data was retrieved from the NZ Legislation API
-(https://api.legislation.govt.nz/) using the NZ Legislation Tool
+(https://api.legislation.govt.nz/) using ANZ Legislation
 (version 1.2.3) on 2026-03-10.
 
 Search query: "health" --type act --status in-force

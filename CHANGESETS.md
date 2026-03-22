@@ -54,7 +54,10 @@ This creates a file in `.changeset/` that should be committed with your PR.
 1. **Create changesets** in your feature branch
 2. **Merge to main** - Changesets action will:
    - Create a "Version Packages" PR automatically
-   - When merged, it will publish to npm and create GitHub release
+   - When merged, it will publish `nz-legislation-tool` to npm
+   - If configured for the ANZ transition release path, it will also publish the
+     generated sibling package `anz-legislation`
+   - Create or update the GitHub release record
 
 ### Manual Release
 
@@ -107,6 +110,11 @@ Configuration is in `.changeset/config.json`:
   "updateInternalDependencies": "patch"
 }
 ```
+
+The repository remains a single-package Changesets project. During the ANZ
+transition, the sibling `anz-legislation` package is generated from the root
+release payload by `scripts/prepare-anz-package.mjs` and published by release
+workflow steps after the canonical `nz-legislation-tool` publish succeeds.
 
 ## 📦 Snapshot Releases (Pre-releases)
 

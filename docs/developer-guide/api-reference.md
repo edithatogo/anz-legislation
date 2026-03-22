@@ -1,12 +1,18 @@
 # API Reference
 
-**Complete API documentation for the NZ Legislation Tool**
+**Complete API documentation for ANZ Legislation**
 
 ---
 
 ## Overview
 
-This is the complete API reference for the NZ Legislation Tool. It includes all public functions, classes, interfaces, and types with examples and usage guidelines.
+This is the complete API reference for ANZ Legislation. It includes all public
+functions, classes, interfaces, and types with examples and usage guidelines.
+
+The product is now presented publicly as **ANZ Legislation**. The published
+package remains on the legacy `nz-legislation-tool` surface during the
+compatibility transition, while the current package also exposes the ANZ CLI
+aliases.
 
 **Generated from:** TypeScript source code  
 **Last Updated:** 2026-03-10  

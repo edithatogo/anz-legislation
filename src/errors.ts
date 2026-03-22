@@ -1,5 +1,5 @@
 /**
- * Error hierarchy for NZ Legislation CLI
+ * Error hierarchy for ANZ Legislation CLI
  * Provides structured error handling with error codes for programmatic handling
  */
 

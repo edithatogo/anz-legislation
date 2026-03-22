@@ -3,7 +3,7 @@
 **Track ID:** anz-brand-transition  
 **Status:** 🟡 IN PROGRESS  
 **Priority:** 🔴 HIGH  
-**Last Updated:** 2026-03-14
+**Last Updated:** 2026-03-21
 
 ---
 
@@ -196,6 +196,30 @@ least risky order remains:
 3. introduce compatibility paths
 4. rename repo and docs surfaces
 5. deprecate old package and binary names later
+
+## Current Implementation Snapshot
+
+The track has now moved beyond planning and into implementation. Work completed
+so far includes:
+
+- safe public-copy updates across README, user docs, developer docs, and
+  documentation-site guidance
+- correction of stale current-guidance repository links to
+  `edithatogo/nz-legislation`
+- clarification that the published package remains `nz-legislation-tool` while
+  both legacy and ANZ binaries are exposed
+- alias-aware CLI help, examples, and warning text based on the invoked binary
+- alias-aware MCP startup messaging that preserves the server ID
+  `nz-legislation`
+- focused helper-based tests for invocation and presentation logic
+- a plain Node smoke test at `scripts/smoke-alias-presentation.mjs` because the
+  current environment does not reliably return Vitest results
+- release-facing messaging updates in `CHANGELOG.md`, `RELEASE_POLICY.md`, and
+  `RELEASE_INSTRUCTIONS.md` so ANZ branding, dual binaries, and historical
+  release records are distinguished clearly
+- generated sibling-package automation via `scripts/prepare-anz-package.mjs`
+  and `scripts/publish-anz-package.mjs`, plus a local smoke test in
+  `scripts/smoke-anz-package.mjs`
 
 ---
 

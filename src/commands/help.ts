@@ -1,6 +1,6 @@
 /**
  * Interactive Help Command
- * Provides menu-driven help navigation for NZ Legislation CLI
+ * Provides menu-driven help navigation for ANZ Legislation CLI
  */
 
 import * as readline from 'readline';
@@ -117,7 +117,7 @@ export function createInteractiveHelpCommand(): Command {
     .alias('help-i')
     .description('Interactive help system with menu navigation')
     .action(async () => {
-      console.log(chalk.blue.bold('\n📚 NZ Legislation Tool - Interactive Help\n'));
+      console.log(chalk.blue.bold('\n📚 ANZ Legislation - Interactive Help\n'));
       console.log('Use arrow keys to navigate, Enter to select, q to quit\n');
 
       const rl = readline.createInterface({
@@ -129,7 +129,7 @@ export function createInteractiveHelpCommand(): Command {
 
       const showMenu = (): void => {
         console.clear();
-        console.log(chalk.blue.bold('\n📚 NZ Legislation Tool - Interactive Help\n'));
+        console.log(chalk.blue.bold('\n📚 ANZ Legislation - Interactive Help\n'));
         console.log('Select a topic:\n');
 
         helpTopics.forEach((topic, index) => {

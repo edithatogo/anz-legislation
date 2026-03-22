@@ -11,7 +11,11 @@
 
 A fast, friendly command-line tool for researchers, legal professionals, and anyone working with legislation across New Zealand and Australia. New Zealand support remains the most complete path today, while Australian providers are being rolled out in staged prerelease form. Get your research done faster with less copying and pasting.
 
-The product is now presented publicly as **ANZ Legislation**. The published npm package and CLI commands remain `nz-legislation-tool`, `nzlegislation`, and `nzlegislation-mcp` for compatibility during the transition.
+The product is now presented publicly as **ANZ Legislation**. The published npm
+package remains `nz-legislation-tool` for compatibility during the transition,
+while the package exposes both the legacy and ANZ CLI binaries:
+`nzlegislation`, `anzlegislation`, `nzlegislation-mcp`, and
+`anzlegislation-mcp`.
 
 **Package links:** [npm package](https://www.npmjs.com/package/nz-legislation-tool) · [GitHub repository](https://github.com/edithatogo/nz-legislation)
 
@@ -33,10 +37,11 @@ The GitHub repository "Packages" area is populated by GitHub Packages publishes,
 Use the CLI if you want direct terminal access for search, retrieval, export, and citation.
 
 ```bash
-npm install -g nz-legislation-tool
-nzlegislation search --query "health act"
-# Or use the new ANZ alias after install
+npm install -g anz-legislation
 anzlegislation search --query "health act"
+# Supported legacy path:
+# npm install -g nz-legislation-tool
+# nzlegislation search --query "health act"
 ```
 
 ### MCP Server
@@ -44,10 +49,11 @@ anzlegislation search --query "health act"
 Use the MCP server if you want to connect the tool to an AI assistant or tool-calling environment.
 
 ```bash
-npm install -g nz-legislation-tool
-nzlegislation-mcp
-# Or use the new ANZ MCP alias after install
+npm install -g anz-legislation
 anzlegislation-mcp
+# Supported legacy path:
+# npm install -g nz-legislation-tool
+# nzlegislation-mcp
 ```
 
 Example MCP command configuration:
@@ -93,25 +99,26 @@ The current package exposes both the legacy binaries and the new ANZ aliases:
 **Option A: Try without installing (recommended for first time)**
 
 ```bash
-npx nz-legislation-tool search --query "health"
+npx anz-legislation search --query "health"
+# Supported legacy path: npx nz-legislation-tool search --query "health"
 ```
 
 **Option B: Install globally (recommended for regular use)**
 
 ```bash
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 ```
 
 ### Step 3: Set Your API Key (1 minute)
 
 ```bash
-nzlegislation config --key YOUR_API_KEY_HERE
+anzlegislation config --key YOUR_API_KEY_HERE
 ```
 
 ### Step 4: Your First Search (30 seconds)
 
 ```bash
-nzlegislation search --query "health act"
+anzlegislation search --query "health act"
 ```
 
 **You should see:**
@@ -337,16 +344,16 @@ Alex is deploying for a research team.
 
 ```bash
 # Install on shared server
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 
 # Configure API key for the team
-nzlegislation config --key $TEAM_API_KEY
+anzlegislation config --key $TEAM_API_KEY
 
 # Test it works
-nzlegislation search --query "test" --limit 1
+anzlegislation search --query "test" --limit 1
 
 # Set up monitoring (check rate limits)
-nzlegislation config --show
+anzlegislation config --show
 ```
 
 ---
@@ -498,6 +505,12 @@ nzlegislation config --show
 ### Option 1: npm (Recommended for regular use)
 
 ```bash
+npm install -g anz-legislation
+```
+
+Supported legacy path:
+
+```bash
 npm install -g nz-legislation-tool
 ```
 
@@ -507,6 +520,12 @@ npm install -g nz-legislation-tool
 ---
 
 ### Option 2: npx (Try before installing)
+
+```bash
+npx anz-legislation search --query "health"
+```
+
+Supported legacy path:
 
 ```bash
 npx nz-legislation-tool search --query "health"

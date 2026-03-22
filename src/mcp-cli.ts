@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /**
- * MCP Server entry point for NZ Legislation Tool
- * Run with: nzlegislation-mcp
+ * MCP Server entry point for ANZ Legislation
+ * Run with: nzlegislation-mcp or anzlegislation-mcp
  */
 
+import { detectMcpBinaryName, getAlternateMcpBinaryName } from '@utils/invocation';
 import { logger } from '@utils/logger';
 
 import { startServer } from './mcp/server.js';
 
 let serverInstance: unknown = null;
+const invokedMcpBinaryName = detectMcpBinaryName();
+const alternateMcpBinaryName = getAlternateMcpBinaryName(invokedMcpBinaryName);
 
 async function shutdown(signal: 'SIGTERM' | 'SIGINT'): Promise<void> {
   logger.info(`MCP server received ${signal}, shutting down gracefully...`);
@@ -23,7 +26,7 @@ async function shutdown(signal: 'SIGTERM' | 'SIGINT'): Promise<void> {
 }
 
 // Start the MCP server
-startServer()
+startServer(invokedMcpBinaryName, alternateMcpBinaryName)
   .then(server => {
     serverInstance = server;
   })

@@ -14,8 +14,9 @@
 
 ## Status
 
-🟡 IN PROGRESS - Planning phases are complete; the track is now ready to move
-from planning into implementation and roll-out work
+🟡 IN PROGRESS - Planning phases are complete and implementation has now begun
+across safe copy surfaces, alias-aware command presentation, and smoke-test
+coverage
 
 ## Summary
 
@@ -30,14 +31,40 @@ Legislation` as the target product identity. It deliberately separates the
 decision, compatibility policy, public-surface migration, and eventual cleanup
 so the transition can happen without breaking current users.
 
-All planning phases are complete. The naming policy is recorded in `decision.md`, the
-rename-sensitive inventory is in `inventory.md`, the dual-branding rules are in
-`rules.md`, and the package/CLI migration strategy is in
-`package-cli-strategy.md`. The repository, documentation, site, MCP, and
+All planning phases are complete. The naming policy is recorded in
+`decision.md`, the rename-sensitive inventory is in `inventory.md`, the
+dual-branding rules are in `rules.md`, and the package/CLI migration strategy
+is in `package-cli-strategy.md`. The repository, documentation, site, MCP, and
 support-link migration checklist is in `repo-docs-migration.md`, and the
-deprecation completion criteria are in `deprecation-plan.md`. The next step is
-no longer planning. It is implementation: execute the rename in reversible
-phases against these approved track artifacts.
+deprecation completion criteria are in `deprecation-plan.md`.
+
+Implementation is now underway. Safe public-copy surfaces have been moved to
+`ANZ Legislation`, stale current-guidance repository links have been corrected
+to `edithatogo/nz-legislation`, CLI and MCP presentation now reflect the
+invoked alias when users run the ANZ binaries, and a non-Vitest smoke test now
+verifies alias-aware presentation behavior in this environment.
+
+The next step is no longer to start implementation. It is to continue it in
+reversible phases against these approved track artifacts.
+
+## Implementation Progress
+
+- public-facing docs and guidance now present the product as `ANZ Legislation`
+  where safe
+- current-guidance repository links now point to `edithatogo/nz-legislation`
+- package documentation now accurately states that `nz-legislation-tool`
+  remains the published package while both legacy and ANZ binaries are exposed
+- CLI help, warning text, and examples now adapt to the invoked binary name
+- MCP startup output now shows both the invoked binary and the alternate binary
+  while preserving the server identifier `nz-legislation`
+- alias-aware presentation logic now has focused helper coverage plus a plain
+  Node smoke test in `scripts/smoke-alias-presentation.mjs`
+- release-facing docs now describe the ANZ product identity, the continued
+  `nz-legislation-tool` package path, and the current dual-binary state without
+  prematurely starting the compatibility window
+- release automation now includes a generated sibling-package path for
+  `anz-legislation`, with local smoke coverage for the publish artifact before
+  the compatibility window starts
 
 ## Intended Outcome
 
@@ -60,4 +87,4 @@ phase exists in the plan, and that the phase contains its own review gate.
 ---
 
 **Track ID:** `anz-brand-transition`
-**Last Updated:** 2026-03-14
+**Last Updated:** 2026-03-21

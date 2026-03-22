@@ -4,7 +4,7 @@
 
 - [Specification](./spec.md) _(future)_
 - [Implementation Plan](./plan.md)
-- [Metadata](./metadata.json) _(future)_
+- [Metadata](./metadata.json)
 
 ## Parent Track
 

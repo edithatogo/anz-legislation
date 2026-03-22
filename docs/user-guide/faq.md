@@ -22,9 +22,12 @@
 
 ## Getting Started
 
-### What is the NZ Legislation Tool?
+### What is ANZ Legislation?
 
-It's a command-line tool that helps you search, retrieve, export, and cite New Zealand legislation. Perfect for researchers, legal professionals, and students who work with NZ laws.
+It's a command-line tool that helps you search, retrieve, export, and cite
+legislation. It is designed for researchers, legal professionals, and students
+working with New Zealand law today, with Australian support being rolled out in
+staged prerelease form.
 
 **In a nutshell:** You type commands, it fetches legislation data from the official NZ Legislation API.
 
@@ -127,12 +130,12 @@ Still not working? [Contact the API team](https://api.legislation.govt.nz/docs/c
 Just two things:
 
 1. **Node.js 18+** ([Download here](https://nodejs.org/))
-2. **NZ Legislation Tool** (installs automatically)
+2. **ANZ Legislation** via the published `anz-legislation` package (installs automatically)
 
 **Already have Node.js?** Then you only need one command:
 
 ```bash
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 ```
 
 ---
@@ -142,7 +145,7 @@ npm install -g nz-legislation-tool
 **Yes!** Use `npx` to run without installing:
 
 ```bash
-npx nz-legislation-tool search --query "health"
+npx anz-legislation search --query "health"
 ```
 
 **Pros:** No installation, try before committing  
@@ -169,7 +172,7 @@ The tool might not be in your PATH. Try:
 **Windows:**
 
 ```bash
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 ```
 
 Then close and reopen your terminal.
@@ -178,18 +181,21 @@ Then close and reopen your terminal.
 You might need sudo:
 
 ```bash
-sudo npm install -g nz-legislation-tool
+sudo npm install -g anz-legislation
 ```
 
 **Still not working?** Try the full path:
 
 ```bash
 # macOS/Linux
-~/.npm-global/bin/nzlegislation search --query "health"
+~/.npm-global/bin/anzlegislation search --query "health"
 
 # Windows
-C:\Users\YOUR_NAME\AppData\Roaming\npm\nzlegislation search --query "health"
+C:\Users\YOUR_NAME\AppData\Roaming\npm\anzlegislation search --query "health"
 ```
+
+Supported legacy path: `npm install -g nz-legislation-tool`,
+`npx nz-legislation-tool ...`, and `nzlegislation`.
 
 ---
 
@@ -531,8 +537,8 @@ The limits are set by the NZ Legislation API team. If you need higher limits for
 
 We welcome contributions! Here's how:
 
-- 🐛 **Report bugs** - [Open an issue](https://github.com/edithatogo/nz-legislation-tool/issues)
-- 💡 **Suggest features** - [Start a discussion](https://github.com/edithatogo/nz-legislation-tool/discussions)
+- 🐛 **Report bugs** - [Open an issue](https://github.com/edithatogo/nz-legislation/issues)
+- 💡 **Suggest features** - [Start a discussion](https://github.com/edithatogo/nz-legislation/discussions)
 - 📝 **Improve docs** - Submit a pull request
 - 💻 **Fix code** - See [CONTRIBUTING.md](../CONTRIBUTING.md)
 
@@ -553,7 +559,7 @@ If you've used the tool and have feedback, that's valuable!
 
 ### How do I report a bug?
 
-**Best way:** [Open an issue on GitHub](https://github.com/edithatogo/nz-legislation-tool/issues)
+**Best way:** [Open an issue on GitHub](https://github.com/edithatogo/nz-legislation/issues)
 
 **Include:**
 
@@ -586,8 +592,8 @@ I've already tried re-setting my API key.
 
 **Still stuck?**
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/nz-legislation-tool/issues)
-- 💬 **Have a question?** [Start a discussion](https://github.com/edithatogo/nz-legislation-tool/discussions)
+- 🐛 **Found a bug?** [Open an issue](https://github.com/edithatogo/nz-legislation/issues)
+- 💬 **Have a question?** [Start a discussion](https://github.com/edithatogo/nz-legislation/discussions)
 - 📧 **Email:** dylan.mordaunt@vuw.ac.nz
 
 **Response time:** We aim to respond within 2 business days.
@@ -615,8 +621,8 @@ I've already tried re-setting my API key.
 
 **Yes!** Join the conversation:
 
-- [GitHub Discussions](https://github.com/edithatogo/nz-legislation-tool/discussions) - Ask questions, share workflows
-- [GitHub Issues](https://github.com/edithatogo/nz-legislation-tool/issues) - Report bugs, request features
+- [GitHub Discussions](https://github.com/edithatogo/nz-legislation/discussions) - Ask questions, share workflows
+- [GitHub Issues](https://github.com/edithatogo/nz-legislation/issues) - Report bugs, request features
 
 ---
 
@@ -624,13 +630,13 @@ I've already tried re-setting my API key.
 
 **Can't find what you're looking for?**
 
-[Start a discussion](https://github.com/edithatogo/nz-legislation-tool/discussions) and we'll help you out. We're always happy to answer questions and improve the documentation based on your feedback.
+[Start a discussion](https://github.com/edithatogo/nz-legislation/discussions) and we'll help you out. We're always happy to answer questions and improve the documentation based on your feedback.
 
 ---
 
 ## ♿ Accessibility
 
-This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation-tool/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
+This documentation aims to meet WCAG 2.1 AA standards. If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
 
 **Features:**
 

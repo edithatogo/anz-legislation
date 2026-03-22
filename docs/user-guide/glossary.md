@@ -165,9 +165,10 @@ _A validation tool_ - A library that checks if your data matches the expected fo
 
 ---
 
-### What is the NZ Legislation Tool?
+### What is ANZ Legislation?
 
-**ELI5:** It's like a robot librarian for New Zealand laws. You ask it questions, and it finds the answers for you really fast!
+**ELI5:** It's like a robot librarian for legislation. You ask it questions,
+and it finds the answers for you really fast.
 
 **For Kids:** Imagine you have a huge book of rules, and you need to find one specific rule about something. This tool helps you find it without reading the whole book!
 

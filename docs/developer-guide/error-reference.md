@@ -6,7 +6,8 @@
 
 ## Overview
 
-This document provides a comprehensive reference for all error messages that may be encountered when using the NZ Legislation Tool. Each error includes:
+This document provides a comprehensive reference for all error messages that
+may be encountered when using ANZ Legislation. Each error includes:
 
 - Error code
 - Error message

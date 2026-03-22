@@ -1,5 +1,19 @@
 # Release v1.1.0 - Instructions
 
+## Status
+
+Historical release record only.
+
+This file documents the `v1.1.0` release process for the legacy
+`nz-legislation-tool` package line. It is not the canonical source for current
+release policy or ANZ transition messaging.
+
+For current policy, use:
+
+- `RELEASE_POLICY.md`
+- `CHANGELOG.md`
+- `conductor/tracks/anz-brand-transition/package-cli-strategy.md`
+
 ## Quick Release (Recommended)
 
 Run the release script:

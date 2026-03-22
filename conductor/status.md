@@ -21,7 +21,7 @@ See also:
 | `release-governance-modernization`   | COMPLETE | Fully documented and marked complete                            |
 | `documentation-site-enhancements`    | PENDING  | Optional post-launch work not yet started                       |
 | `documentation-site-completion`      | COMPLETE | Parent completion record restored                               |
-| `anz-brand-transition`               | ACTIVE   | Planning complete; implementation is next                       |
+| `anz-brand-transition`               | ACTIVE   | Implementation in progress; ANZ-first migration is underway     |
 | `legal-metadata-standards-alignment` | COMPLETE | Canonical standards layer documented and implemented additively |
 
 ## Archived Tracks
@@ -42,8 +42,9 @@ detail under `research-conductor` instead of this product-side Conductor tree.
 ## Current Read on Project State
 
 - Conductor now has a clean active-track inventory.
-- Two active tracks are explicitly complete.
-- Two active tracks are explicitly pending.
+- Three active tracks are explicitly complete.
+- One active track is explicitly pending.
+- One active track is explicitly in progress.
 - The documentation enhancement track no longer contradicts itself about launch
   status.
 - The missing parent record for documentation site completion has been

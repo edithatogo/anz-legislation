@@ -1,5 +1,5 @@
 /**
- * MCP Server for NZ Legislation Tool
+ * MCP Server for ANZ Legislation
  * Provides AI assistants with tools to interact with NZ Legislation API
  */
 
@@ -11,6 +11,7 @@ import { searchWorks, getWork, getWorkVersions } from '@client';
 import { getConfig, hasApiKey } from '@config';
 import { generateCitation, worksToCsv } from '@output';
 import { logger } from '@utils/logger';
+import { buildMcpStartupMessages } from '@utils/presentation';
 
 /**
  * MCP request tracking for rate limiting and audit
@@ -476,18 +477,17 @@ function registerLegislationResource(server: McpServer): void {
 /**
  * Start MCP server with stdio transport
  */
-export async function startServer(): Promise<void> {
+export async function startServer(
+  invokedBinaryName = 'nzlegislation-mcp',
+  alternateBinaryName = 'anzlegislation-mcp'
+): Promise<void> {
   const server = createServer();
   const transport = new StdioServerTransport();
 
   await server.connect(transport);
 
-  // eslint-disable-next-line no-console
-  console.error('NZ Legislation MCP Server running on stdio');
-  // eslint-disable-next-line no-console
-  console.error(
-    'Tools available: search_legislation, get_legislation, get_legislation_versions, generate_citation, export_legislation, get_config'
-  );
-  // eslint-disable-next-line no-console
-  console.error('Resources available: legislation://{workId}');
+  for (const message of buildMcpStartupMessages(invokedBinaryName, alternateBinaryName)) {
+    // eslint-disable-next-line no-console
+    console.error(message);
+  }
 }

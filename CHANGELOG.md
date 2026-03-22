@@ -1,4 +1,12 @@
-# nz-legislation-tool
+# ANZ Legislation
+
+Published package: `nz-legislation-tool`
+
+The product is now presented publicly as **ANZ Legislation**. During the
+compatibility transition, the published package remains
+`nz-legislation-tool`, and the package exposes both legacy and ANZ binaries:
+`nzlegislation`, `anzlegislation`, `nzlegislation-mcp`, and
+`anzlegislation-mcp`.
 
 ## 1.2.0-next.0
 
@@ -11,6 +19,9 @@
   - Routing flag `--jurisdiction`
   - Australian citation style
   - Hardened test suite
+  - Dual binary exposure for both legacy and ANZ command names:
+    `nzlegislation`, `anzlegislation`, `nzlegislation-mcp`, and
+    `anzlegislation-mcp`
 
 ## 1.1.0
 

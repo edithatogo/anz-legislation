@@ -287,7 +287,7 @@ nzlegislation search --query "health"
 
 ```bash
 # Reinstall with admin privileges
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 
 # Then close and reopen your terminal
 ```
@@ -296,7 +296,7 @@ npm install -g nz-legislation-tool
 
 ```bash
 # May need sudo
-sudo npm install -g nz-legislation-tool
+sudo npm install -g anz-legislation
 
 # Or fix npm permissions (recommended)
 # See: https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
@@ -374,13 +374,13 @@ npm cache clean --force
 **Step 3: Try again**
 
 ```bash
-npm install -g nz-legislation-tool
+npm install -g anz-legislation
 ```
 
 **Still failing?** Try npx instead:
 
 ```bash
-npx nz-legislation-tool search --query "health"
+npx anz-legislation search --query "health"
 ```
 
 ---

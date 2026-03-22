@@ -1,6 +1,6 @@
 # Visual Documentation
 
-**Architecture diagrams, flowcharts, and visual guides for the NZ Legislation Tool**
+**Architecture diagrams, flowcharts, and visual guides for ANZ Legislation**
 
 ---
 

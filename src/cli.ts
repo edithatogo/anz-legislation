@@ -20,7 +20,9 @@ import { streamCommand } from './commands/stream.js';
 import { getConfig } from './config.js';
 import { ApplicationError, ErrorCode, getUserFriendlyMessage } from './errors.js';
 import { initializeProviders } from './providers/index.js';
+import { detectCliBinaryName, getAlternateCliBinaryName } from './utils/invocation.js';
 import { logger } from './utils/logger.js';
+import { buildCliHelpFooter } from './utils/presentation.js';
 
 // Get package version from package.json
 const pkg = await import('../package.json', { with: { type: 'json' } });
@@ -33,39 +35,18 @@ initializeProviders({
 
 // Create main CLI program
 const program = new Command();
+const invokedCliName = detectCliBinaryName();
+const alternateCliName = getAlternateCliBinaryName(invokedCliName);
 
 program
-  .name('nzlegislation')
+  .name(invokedCliName)
   .description('Search and retrieve legislation data across jurisdictions')
   .version(pkg.default.version)
   .configureHelp({
     sortOptions: true,
     sortSubcommands: true,
   })
-  .addHelpText(
-    'after',
-    `
-Jurisdictions:
-  - nz (New Zealand, default)
-  - au-comm (Australian Commonwealth)
-  - au-qld (Queensland)
-
-Examples:
-  $ nzlegislation search --query "health" --type act
-  $ nzlegislation get "act_public_1989_18"
-  $ nzlegislation get "act/1988/123" --jurisdiction au-comm
-  $ nzlegislation get "act_public_1989_18" --versions
-  $ nzlegislation export --query "health" --output health.csv
-  $ nzlegislation stream --query "health" --output health.csv  # Stream large exports
-  $ nzlegislation batch --ids "act_public_1989_18,act_public_1986_132" --type getWork --output results.json
-  $ nzlegislation batch --file works.csv --type getWork --output results.json
-  $ nzlegislation cite "act_public_1989_18" --style bibtex
-  $ nzlegislation config --show
-  $ nzlegislation cache --stats
-
-Documentation: https://github.com/edithatogo/nz-legislation
-NZ API Documentation: https://api.legislation.govt.nz/docs/`
-  );
+  .addHelpText('after', buildCliHelpFooter(invokedCliName, alternateCliName));
 
 // Add global options
 program
@@ -98,7 +79,7 @@ program.hook('preAction', (thisCommand, actionCommand) => {
 
   if (!config.apiKey || config.apiKey === 'your_api_key_here') {
     logger.warn('API key not configured.');
-    logger.warn('Run "nzlegislation config" to set up your API key.\n');
+    logger.warn(`Run "${invokedCliName} config" to set up your API key.\n`);
   }
 
   // Apply global options
@@ -148,7 +129,7 @@ function displayErrorWithSuggestions(error: ApplicationError): void {
     case ErrorCode.CONFIG_NOT_FOUND:
       console.error(
         chalk.white('  1. Run ') +
-          chalk.cyan('nzlegislation config') +
+          chalk.cyan(`${invokedCliName} config`) +
           chalk.white(' to set up your API key')
       );
       console.error(
@@ -161,7 +142,7 @@ function displayErrorWithSuggestions(error: ApplicationError): void {
       console.error(chalk.white('  1. Check your API key is correct'));
       console.error(
         chalk.white('  2. Run ') +
-          chalk.cyan('nzlegislation config --show') +
+          chalk.cyan(`${invokedCliName} config --show`) +
           chalk.white(' to verify')
       );
       console.error(chalk.white('  3. Contact API support if the issue persists'));
@@ -171,7 +152,7 @@ function displayErrorWithSuggestions(error: ApplicationError): void {
       console.error(chalk.white('  1. Check the work ID is correct'));
       console.error(
         chalk.white('  2. Use ') +
-          chalk.cyan('nzlegislation search') +
+          chalk.cyan(`${invokedCliName} search`) +
           chalk.white(' to find the correct ID')
       );
       console.error(
@@ -210,7 +191,8 @@ function displayErrorWithSuggestions(error: ApplicationError): void {
         chalk.white('  2. Use ') + chalk.cyan('--help') + chalk.white(' to see valid options')
       );
       console.error(
-        chalk.white('  3. Example: ') + chalk.cyan('nzlegislation get "act_public_1989_18"')
+        chalk.white('  3. Example: ') +
+          chalk.cyan(`${invokedCliName} get "act_public_1989_18"`)
       );
       break;
 

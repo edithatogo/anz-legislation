@@ -2,7 +2,13 @@
 
 ## Purpose
 
-This document defines how `nz-legislation-tool` is versioned, released, and communicated.
+This document defines how `nz-legislation-tool` is versioned, released, and
+communicated.
+
+The public product identity is now **ANZ Legislation**. During the transition,
+the preferred npm package path is `anz-legislation`, while
+`nz-legislation-tool` remains supported as a legacy-compatible package path
+through the compatibility window.
 
 **The npm package version is the canonical product version.** All public contracts are governed by that version.
 
@@ -24,6 +30,14 @@ supported public contract.
 - Workflow: `Release Stable`
 - npm dist-tag: `latest`
 - Intended audience: all users
+- Preferred install path: `npm install -g anz-legislation`
+- Supported legacy install path: `npm install -g nz-legislation-tool`
+- Current binary set: `nzlegislation`, `anzlegislation`,
+  `nzlegislation-mcp`, `anzlegislation-mcp`
+- Release automation publishes `nz-legislation-tool` first and may then publish
+  the generated sibling package `anz-legislation` with the same version
+- Stable publishing is configured to use GitHub Actions trusted publishing with
+  provenance rather than a repository-scoped `NPM_TOKEN`
 
 ### Prerelease
 
@@ -31,6 +45,14 @@ supported public contract.
 - Workflow: `Release Next`
 - npm dist-tag: `next`
 - Intended audience: early adopters and maintainers validating approved prerelease work
+- Preferred prerelease package path: `anz-legislation@next`
+- Supported legacy prerelease package path: `nz-legislation-tool@next`
+- Current prerelease binary set: `nzlegislation`, `anzlegislation`,
+  `nzlegislation-mcp`, `anzlegislation-mcp`
+- Prerelease automation publishes `nz-legislation-tool@next` first and may then
+  publish `anz-legislation@next` from the same built payload
+- Prerelease publishing is configured to use GitHub Actions trusted publishing
+  with provenance rather than a repository-scoped `NPM_TOKEN`
 
 `next` is a governed prerelease lane, not an automatic promise of a major
 release. It may be used for additive work that is not yet ready for the stable
@@ -249,8 +271,37 @@ true:
 
 - Canonical public npm package: `nz-legislation-tool`
 - GitHub Packages mirror: `@edithatogo/nz-legislation-tool`
+- ANZ sibling npm package path: `anz-legislation` (generated from the canonical
+  release payload when dual-publish is enabled)
 
 The GitHub Packages mirror exists for repository package visibility and ecosystem convenience. npm remains the canonical installation target unless this policy is revised.
+
+## ANZ Transition Messaging
+
+Until `anz-legislation` is actually published, release notes and support docs
+should use the following message shape:
+
+- present the product publicly as `ANZ Legislation`
+- state that the preferred npm package path is `anz-legislation`
+- state that `nz-legislation-tool` remains the supported legacy path
+- state that both legacy and ANZ binaries are currently exposed
+- describe `nz-legislation-tool` and `nzlegislation*` as supported
+  legacy-compatible paths, not obsolete paths
+- do not imply that the compatibility window has started until the sibling
+  package `anz-legislation` actually ships
+
+The compatibility window begins only when both of the following are true:
+
+1. `anz-legislation` has been publicly shipped
+2. `anzlegislation` and `anzlegislation-mcp` are publicly shipped as part of
+   that package path, not only as aliases from `nz-legislation-tool`
+
+The implementation path for that publish event is now:
+
+- generate `anz-legislation` from the root release payload with
+  `scripts/prepare-anz-package.mjs`
+- publish it with `scripts/publish-anz-package.mjs`
+- keep `nz-legislation-tool` as the root package managed directly by Changesets
 
 ## Release Checklist
 
@@ -259,14 +310,18 @@ Before stable release:
 1. Merge approved changes to `main`.
 2. Ensure changesets correctly reflect release intent.
 3. Confirm CI is green.
-4. Let `Release Stable` create the release PR or publish.
+4. Confirm the sibling-package smoke test still passes if the ANZ publish path
+   is part of the release scope.
+5. Let `Release Stable` create the release PR or publish.
 
 Before prerelease:
 
 1. Merge approved prerelease work to `next`.
 2. Confirm prerelease intent and branch scope.
 3. Confirm CI is green.
-4. Let `Release Next` publish to the `next` dist-tag.
+4. Confirm the sibling-package smoke test still passes if the ANZ publish path
+   is part of the release scope.
+5. Let `Release Next` publish to the `next` dist-tag.
 
 ## Hotfix Policy
 

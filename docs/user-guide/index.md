@@ -1,12 +1,21 @@
 # User Guide
 
-**Your complete guide to using the NZ Legislation Tool**
+**Your complete guide to using ANZ Legislation**
 
 ---
 
 ## Welcome!
 
-This guide will help you get the most out of the NZ Legislation Tool. Whether you're a researcher, student, developer, or administrator, you'll find workflows and tips tailored to your needs.
+This guide will help you get the most out of ANZ Legislation. Whether you're a
+researcher, student, developer, or administrator, you'll find workflows and
+tips tailored to your needs.
+
+The product is now presented publicly as **ANZ Legislation**. The preferred
+package path is `anz-legislation`, while `nz-legislation-tool` remains
+supported during the compatibility transition. The package surfaces expose both
+the legacy and ANZ command names:
+`nzlegislation`, `anzlegislation`, `nzlegislation-mcp`, and
+`anzlegislation-mcp`.
 
 **New to the tool?** Start with our [Quick Start Guide](../../README.md#-quick-start-5-minutes).
 
@@ -93,7 +102,7 @@ This guide will help you get the most out of the NZ Legislation Tool. Whether yo
 - **[Glossary](./glossary.md)** - Technical terms explained simply
 - **[Accessibility](./accessibility-search.md)** - Accessibility features & search tips
 - **[Command Reference](./commands/)** - Detailed command documentation
-- **[GitHub Discussions](https://github.com/edithatogo/nz-legislation-tool/discussions)** - Ask the community
+- **[GitHub Discussions](https://github.com/edithatogo/nz-legislation/discussions)** - Ask the community
 
 ---
 
@@ -110,7 +119,7 @@ This documentation aims to meet WCAG 2.1 AA standards for accessibility.
 - ✅ Clear heading hierarchy
 - ✅ Plain language (Grade 8-10 reading level)
 
-**Issues?** If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation-tool/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
+**Issues?** If you encounter accessibility barriers, please [open an issue](https://github.com/edithatogo/nz-legislation/issues) or [contact us](mailto:dylan.mordaunt@vuw.ac.nz).
 
 ---
 
