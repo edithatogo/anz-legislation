@@ -1,5 +1,23 @@
 # ANZ Legislation
 
+## 1.2.0
+
+### Minor Changes
+
+- e341fa9: Fix the multi-jurisdiction beta branch so provider-backed `search`, `get`, and `cite` commands remain compatible with the existing CLI output contract.
+
+  Remove committed Docusaurus build artifacts from the repository and tighten the provider health, cache TTL, and rate-limiter behavior for Australian beta support.
+
+- 04eb0a0: Prepare the ANZ sibling package publish path by generating an `anz-legislation`
+  package artifact, wiring release workflows to publish it after
+  `nz-legislation-tool`, and documenting the dual-publish release behavior.
+
+### Patch Changes
+
+- 858dd83: Add a standards-aligned canonical legal metadata layer with additive export metadata and schema.org publication helpers.
+- 32fcb8a: Add `anzlegislation` and `anzlegislation-mcp` as supported CLI aliases while keeping the legacy binary names in place, and document the alias availability in the README.
+- 96491ce: Qualify the initial ANZ branding copy so README and CLI help reflect the current prerelease scope of Australian support, and complete the implementation-ready planning artifacts for the ANZ transition track.
+
 Published package: `nz-legislation-tool`
 
 The product is now presented publicly as **ANZ Legislation**. During the
