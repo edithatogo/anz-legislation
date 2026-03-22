@@ -10,10 +10,10 @@ describe('package manifest', () => {
     };
 
     expect(packageJson.bin).toEqual({
-      nzlegislation: './dist/cli.js',
-      anzlegislation: './dist/cli.js',
-      'nzlegislation-mcp': './dist/mcp-cli.js',
-      'anzlegislation-mcp': './dist/mcp-cli.js',
+      nzlegislation: 'dist/cli.js',
+      anzlegislation: 'dist/cli.js',
+      'nzlegislation-mcp': 'dist/mcp-cli.js',
+      'anzlegislation-mcp': 'dist/mcp-cli.js',
     });
   });
 });
